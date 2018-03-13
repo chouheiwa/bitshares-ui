@@ -61,7 +61,7 @@ class DepositWithdrawAssetSelector extends React.Component {
         let coinArr = [];
 
         if (!(this.props.includeBTS === false)) {
-            coinArr.push({id: "BTS", label: "BTS", gateway: ""});
+            coinArr.push({id: "KGT", label: "KGT", gateway: ""});
         }
 
         let coinItems = coinArr
@@ -75,7 +75,7 @@ class DepositWithdrawAssetSelector extends React.Component {
                 let symbolWithGateway = item.gateway + "." + item.id;
                 let symbolWithoutGateway = item.id;
 
-                if (symbolWithoutGateway == "BTS") return true;
+                if (symbolWithoutGateway == "KGT") return true;
 
                 if (include) {
                     return (

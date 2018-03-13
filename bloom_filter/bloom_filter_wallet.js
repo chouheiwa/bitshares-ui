@@ -24,7 +24,7 @@ require('coffee-script/register') // npm install coffee-script
 var graphenejs = require("bitsharesjs");
 var h = graphenejs.hash;
 var key_utils = graphenejs.key;
-const chainPrefix = "BTS";
+const chainPrefix = "KGT";
 
 fs.readFile('bloom_bitshares.dat', function (err, data) {
     if (err) throw err
