@@ -24,7 +24,7 @@ class Assets extends React.Component {
             filterUIA: props.filterUIA || "",
             filterMPA: props.filterMPA || "",
             filterPM: props.filterPM || ""
-        }
+        };
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -71,7 +71,7 @@ class Assets extends React.Component {
             return <span>-</span>;
         }
 
-        return <LinkToAccountById account={name_or_id}/>
+        return <LinkToAccountById account={name_or_id}/>;
     }
 
     _onFilter(type, e) {
@@ -150,7 +150,7 @@ class Assets extends React.Component {
             );
         }).map((asset) => {
             let description = assetUtils.parseDescription(asset.options.description);
-            let marketID = asset.symbol + "_" + (description.market ? description.market : coreAsset ? coreAsset.get("symbol") : "BTS");
+            let marketID = asset.symbol + "_" + (description.market ? description.market : coreAsset ? coreAsset.get("symbol") : "ALAD");
 
             return (
                 <tr key={asset.id.split(".")[2]}>

@@ -33,11 +33,11 @@ class OpenLedgerFiatDepositWithdrawCurrency extends React.Component {
     }
 
     getWithdrawModalId() {
-        return "withdraw_fiat_openledger_"+this.props.receive_asset.get('symbol');
+        return "withdraw_fiat_openledger_"+this.props.receive_asset.get("symbol");
     }
 
     getDepositModalId() {
-        return "deposit_fiat_openledger_"+this.props.receive_asset.get('symbol');
+        return "deposit_fiat_openledger_"+this.props.receive_asset.get("symbol");
     }
 
     onWithdraw() {
@@ -55,12 +55,12 @@ class OpenLedgerFiatDepositWithdrawCurrency extends React.Component {
         let wallet = WalletDb.getWallet();
         let account_balances_object = this.props.account.get("balances");
 
-        let balance = "0 " + this.props.receive_asset.get('symbol');
+        let balance = "0 " + this.props.receive_asset.get("symbol");
 
         let account_balances = account_balances_object.toJS();
         let asset_types = Object.keys(account_balances);
         if (asset_types.length > 0) {
-            let current_asset_id = this.props.receive_asset.get('id');
+            let current_asset_id = this.props.receive_asset.get("id");
             if( current_asset_id )
                 balance = (<span><Translate component="span" content="transfer.available"/>: <BalanceComponent balance={account_balances[current_asset_id]}/></span>);
         }
@@ -81,9 +81,9 @@ class OpenLedgerFiatDepositWithdrawCurrency extends React.Component {
                                     <br/>
                                     <div className="grid-block vertical">
                                         <DepositFiatOpenLedger
-                                            account={this.props.account.get('name')}
-                                            issuer_account={this.props.issuer_account.get('name')}
-                                            receive_asset={this.props.receive_asset.get('symbol')}
+                                            account={this.props.account.get("name")}
+                                            issuer_account={this.props.issuer_account.get("name")}
+                                            receive_asset={this.props.receive_asset.get("symbol")}
                                             rpc_url={this.props.rpc_url}
                                             deposit_asset={this.props.deposit_asset}
                                             modal_id={deposit_modal_id} />
@@ -107,9 +107,9 @@ class OpenLedgerFiatDepositWithdrawCurrency extends React.Component {
                                     <br/>
                                     <div className="grid-block vertical">
                                         <WithdrawFiatOpenLedger
-                                            account={this.props.account.get('name')}
-                                            issuer_account={this.props.issuer_account.get('name')}
-                                            receive_asset={this.props.receive_asset.get('symbol')}
+                                            account={this.props.account.get("name")}
+                                            issuer_account={this.props.issuer_account.get("name")}
+                                            receive_asset={this.props.receive_asset.get("symbol")}
                                             rpc_url={this.props.rpc_url}
                                             deposit_asset={this.props.deposit_asset}
                                             modal_id={withdraw_modal_id} />
@@ -123,7 +123,7 @@ class OpenLedgerFiatDepositWithdrawCurrency extends React.Component {
         return  <tr>
                     <td>{ this.props.deposit_asset}</td>
                     { deposit_fragment }
-                    <td><AccountBalance account={this.props.account.get('name')} asset={this.props.receive_asset.get('symbol')} /></td>
+                    <td><AccountBalance account={this.props.account.get("name")} asset={this.props.receive_asset.get("symbol")} /></td>
                     { withdraw_fragment }
                 </tr>;
     }
@@ -149,16 +149,16 @@ class OpenLedgerFiatDepositWithdrawal extends React.Component {
         };
 
         // get approval status from openledger
-        let json_rpc_request = { "jsonrpc": "2.0", "id": 1, "method": "isValidatedForFiat", "params": {"bitsharesAccountName": this.props.account.get('name')}};
+        let json_rpc_request = { "jsonrpc": "2.0", "id": 1, "method": "isValidatedForFiat", "params": {"bitsharesAccountName": this.props.account.get("name")}};
         let is_validated_promise = fetch(this.props.rpc_url,
-                                                {method: 'POST',
+                                                {method: "POST",
                                                  headers: new Headers({"Accept": "application/json",
                                                  "content-type":"application/x-www-form-urlencoded"}),
-                                                 body: 'rq=' + encodeURIComponent(JSON.stringify(json_rpc_request)) })
+                                                 body: "rq=" + encodeURIComponent(JSON.stringify(json_rpc_request)) })
                                  .then(response => response.json());
 
         is_validated_promise.then((json_response) => {
-            if ('result' in json_response)
+            if ("result" in json_response)
                 this.setState( { allowedFiatCurrencies : json_response.result } );
         })
         .catch((error) => {
@@ -168,7 +168,7 @@ class OpenLedgerFiatDepositWithdrawal extends React.Component {
                     "withdraw": []
                 }
             });
-        })
+        });
     }
 
 
@@ -181,7 +181,7 @@ class OpenLedgerFiatDepositWithdrawal extends React.Component {
         if (!this.props.account || !this.props.issuer_account)
             return  <div></div>;
 
-        return <div></div>
+        return <div></div>;
 
      /*         <table className="table">
                         <thead>

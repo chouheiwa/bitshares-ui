@@ -211,11 +211,14 @@ class AccountAssets extends React.Component {
             if (desc.length > 100) {
                 desc = desc.substr(0, 100) + "...";
             }
+
+            const dynamic = asset.dynamic || {};
+
             return (
                     <tr key={asset.symbol}>
                         <td><Link to={`/asset/${asset.symbol}`}>{asset.symbol}</Link></td>
                         <td style={{maxWidth: "250px"}}>{desc}</td>
-                        <td><FormattedAsset amount={parseInt(asset.dynamic.current_supply, 10)} asset={asset.id} /></td>
+                        <td><FormattedAsset amount={parseInt(dynamic["current_supply"] ? dynamic["current_supply"] : 0, 10)} asset={asset.id} /></td>
                         <td><FormattedAsset amount={parseInt(asset.options.max_supply, 10)} asset={asset.id} /></td>
                         <td>
                             {!asset.bitasset_data_id ? (

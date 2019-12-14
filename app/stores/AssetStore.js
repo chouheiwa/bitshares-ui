@@ -23,11 +23,12 @@ class AssetStore extends BaseStore {
             return false;
         }
         this.assetsLoading = payload.loading;
+        console.warn(payload);
 
         if (payload.assets) {
             payload.assets.forEach(asset => {
 
-                for (var i = 0; i < payload.dynamic.length; i++) {
+                for (let i = 0; i < payload.dynamic.length; i++) {
                     if (payload.dynamic[i].id === asset.dynamic_asset_data_id) {
                         asset.dynamic = payload.dynamic[i];
                         break;
