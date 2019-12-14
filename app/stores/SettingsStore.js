@@ -170,36 +170,18 @@ class SettingsStore {
             this.marketsKey = this._getChainKey("userMarkets");
             // Default markets setup
             let topMarkets = {
-                markets_4018d784: [ // BTS MAIN NET
-                    "OPEN.MKR", "BTS", "OPEN.ETH", "ICOO", "BTC", "OPEN.LISK", "BKT",
-                    "OPEN.STEEM", "OPEN.GAME", "OCT", "USD", "CNY", "BTSR", "OBITS",
-                    "OPEN.DGD", "EUR", "GOLD", "SILVER", "IOU.CNY", "OPEN.DASH",
-                    "OPEN.USDT", "OPEN.EURT", "OPEN.BTC", "CADASTRAL", "BLOCKPAY", "BTWTY",
-                    "OPEN.INCNT", "KAPITAL", "OPEN.MAID", "OPEN.SBD", "OPEN.GRC",
-                    "YOYOW", "HERO", "RUBLE", "SMOKE", "STEALTH", "BRIDGE.BCO",
-                    "BRIDGE.BTC", "KEXCOIN", "PPY", "OPEN.EOS", "OPEN.OMG", "CVCOIN",
-                    "BRIDGE.ZNY", "BRIDGE.MONA", "OPEN.LTC", "GDEX.BTC", "GDEX.EOS", "GDEX.ETH",
-                    "GDEX.BTO", "WIN.ETH", "WIN.ETC", "WIN.HSR"
-                ],
-                markets_39f5e2ed: [ // TESTNET
-                    "PEG.FAKEUSD", "BTWTY"
-                ]
+                markets_aec938ee: ["CNY", "ALAD", "BTC", "ETH", "LTC"],
             };
 
             let bases = {
-                markets_4018d784: [ // BTS MAIN NET
-                    "USD", "OPEN.BTC", "CNY", "BTS", "BTC"
-                ],
-                markets_39f5e2ed: [ // TESTNET
-                    "TEST"
-                ]
+                markets_aec938ee: ["CNY", "ALAD"],
             };
 
-            let coreAssets = {markets_4018d784: "BTS", markets_39f5e2ed: "TEST"};
+            let coreAssets = {markets_aec938ee: "ALAD"};
             let coreAsset = coreAssets[this.starredKey] || "BTS";
             this.defaults.unit[0] = coreAsset;
 
-            let chainBases = bases[this.starredKey] || bases.markets_4018d784;
+            let chainBases = bases[this.starredKey] || bases.markets_aec938ee;
             this.preferredBases = Immutable.List(chainBases);
 
             function addMarkets(target, base, markets) {

@@ -114,7 +114,7 @@ class MarketGroup extends React.Component {
 
     render() {
         let {columns, markets, base, marketStats, starredMarkets,
-            current, findMarketTab} = this.props;
+            current} = this.props;
         let {sortBy, inverseSort, open} = this.state;
 
         if (!markets || !markets.length) {
@@ -123,32 +123,32 @@ class MarketGroup extends React.Component {
 
         let headers = columns.map(header => {
             switch (header.name) {
-            case "market":
-                return <th key={header.name} className="clickable" onClick={this._changeSort.bind(this, "name")}><Translate content="exchange.market" /></th>;
+                case "market":
+                    return <th key={header.name} className="clickable" onClick={this._changeSort.bind(this, "name")}><Translate content="exchange.market" /></th>;
 
-            case "vol":
-                return <th key={header.name} className="clickable" onClick={this._changeSort.bind(this, "volume")}style={{textAlign: "right"}}><Translate content="exchange.vol_short" /></th>;
+                case "vol":
+                    return <th key={header.name} className="clickable" onClick={this._changeSort.bind(this, "volume")}style={{textAlign: "right"}}><Translate content="exchange.vol_short" /></th>;
 
-            case "price":
-                return <th key={header.name} style={{textAlign: "right"}}><Translate content="exchange.price" /></th>;
+                case "price":
+                    return <th key={header.name} style={{textAlign: "right"}}><Translate content="exchange.price" /></th>;
 
-            case "quoteSupply":
-                return <th key={header.name}><Translate content="exchange.quote_supply" /></th>;
+                case "quoteSupply":
+                    return <th key={header.name}><Translate content="exchange.quote_supply" /></th>;
 
-            case "baseSupply":
-                return <th key={header.name}><Translate content="exchange.base_supply" /></th>;
+                case "baseSupply":
+                    return <th key={header.name}><Translate content="exchange.base_supply" /></th>;
 
-            case "change":
-                return <th key={header.name} className="clickable" onClick={this._changeSort.bind(this, "change")} style={{textAlign: "right"}}><Translate content="exchange.change" /></th>;
+                case "change":
+                    return <th key={header.name} className="clickable" onClick={this._changeSort.bind(this, "change")} style={{textAlign: "right"}}><Translate content="exchange.change" /></th>;
 
-            case "issuer":
-                return <th key={header.name}><Translate content="explorer.assets.issuer" /></th>;
+                case "issuer":
+                    return <th key={header.name}><Translate content="explorer.assets.issuer" /></th>;
 
-            case "add":
-                return <th key={header.name} style={{textAlign: "right"}}><Translate content="account.perm.confirm_add" /></th>;
+                case "add":
+                    return <th key={header.name} style={{textAlign: "right"}}><Translate content="account.perm.confirm_add" /></th>;
 
-            default:
-                return <th key={header.name}></th>;
+                default:
+                    return <th key={header.name}></th>;
             }
         });
 
@@ -184,46 +184,46 @@ class MarketGroup extends React.Component {
 
                 switch (sortBy) {
 
-                case "name":
-                    if (a_symbols[0] > b_symbols[0]) {
-                        return inverseSort ? -1 : 1;
-                    } else if (a_symbols[0] < b_symbols[0]) {
-                        return inverseSort ? 1 : -1;
-                    } else {
-                        if (a_symbols[1] > b_symbols[1]) {
+                    case "name":
+                        if (a_symbols[0] > b_symbols[0]) {
                             return inverseSort ? -1 : 1;
-                        } else if (a_symbols[1] < b_symbols[1]) {
+                        } else if (a_symbols[0] < b_symbols[0]) {
                             return inverseSort ? 1 : -1;
+                        } else {
+                            if (a_symbols[1] > b_symbols[1]) {
+                                return inverseSort ? -1 : 1;
+                            } else if (a_symbols[1] < b_symbols[1]) {
+                                return inverseSort ? 1 : -1;
+                            } else {
+                                return 0;
+                            }
+                        }
+
+                    case "volume":
+                        if (aStats && bStats) {
+                            if (inverseSort) {
+                                return bStats.volumeBase - aStats.volumeBase;
+                            } else {
+                                return aStats.volumeBase - bStats.volumeBase;
+                            }
                         } else {
                             return 0;
                         }
-                    }
 
-                case "volume":
-                    if (aStats && bStats) {
-                        if (inverseSort) {
-                            return bStats.volumeBase - aStats.volumeBase;
+                    case "change":
+                        if (aStats && bStats) {
+                            if (inverseSort) {
+                                return bStats.change - aStats.change;
+                            } else {
+                                return aStats.change - bStats.change;
+                            }
                         } else {
-                            return aStats.volumeBase - bStats.volumeBase;
+                            return 0;
                         }
-                    } else {
-                        return 0;
-                    }
-
-                case "change":
-                    if (aStats && bStats) {
-                        if (inverseSort) {
-                            return bStats.change - aStats.change;
-                        } else {
-                            return aStats.change - bStats.change;
-                        }
-                    } else {
-                        return 0;
-                    }
                 }
             });
 
-        let caret = open ? <span>&#9660;</span> : <span>&#9650;</span>;
+        // let caret = open ? <span>&#9660;</span> : <span>&#9650;</span>;
 
         return (
             <div style={{paddingRight: 10}}>
@@ -274,8 +274,8 @@ class MyMarkets extends React.Component {
             lookupBase: null,
             inputValue: "",
             minWidth: "100%",
-            findBaseInput: "USD",
-            activeFindBase: "USD"
+            findBaseInput: "CNY",
+            activeFindBase: "CNY"
         };
 
         this._setMinWidth = this._setMinWidth.bind(this);
@@ -484,7 +484,7 @@ class MyMarkets extends React.Component {
         let {starredMarkets, defaultMarkets, marketStats, columns, searchAssets, assetsLoading,
             preferredBases, core, current, viewSettings, listHeight, onlyStars, userMarkets} = this.props;
         let {activeMarketTab, activeTab, lookupQuote, lookupBase} = this.state;
-        let otherMarkets = <tr></tr>;
+        let otherMarkets = <tr />;
         const myMarketTab = activeTab === "my-market";
 
         let defaultBases = preferredBases.map(a => a);
@@ -689,8 +689,8 @@ class MyMarkets extends React.Component {
                         </label>
                         <div className="float-right search-wrapper" style={{paddingLeft: 20}}>
                              <form>
-                                <input autocomplete="off" style={{fontSize: "0.9rem", height: "inherit", position: "relative", top: 1, padding: 2}} type="text" className="no-margin market-filter-input" placeholder="Filter" maxLength="16" name="focus" required="required" value={this.state.myMarketFilter} onChange={this.handleSearchUpdate} />
-                                <button className="clear-text" type="reset" onClick={this.clearInput}></button>
+                                <input autoComplete="off" style={{fontSize: "0.9rem", height: "inherit", position: "relative", top: 1, padding: 2}} type="text" className="no-margin market-filter-input" placeholder="Filter" maxLength="16" name="focus" required="required" value={this.state.myMarketFilter} onChange={this.handleSearchUpdate} />
+                                <button className="clear-text" type="reset" onClick={this.clearInput}/>
                             </form>
                         </div>
 
