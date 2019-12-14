@@ -75,8 +75,8 @@
   },
   "browsersList": "electron 6.1.4",
   "build": {
-    "productName": "BitShares",
-    "appId": "org.bitshares.graphene",
+    "productName": "阿拉丁区块链交易所",
+    "appId": "io.alad.chouheiwa.",
     "files": [
       "build/electron",
       "!node_modules"
