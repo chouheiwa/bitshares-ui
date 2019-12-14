@@ -8,7 +8,9 @@ import { withRouter } from "react-router/es";
 import { connect } from "alt-react";
 
 const autoSelectAPI = "wss://fake.automatic-selection.com";
-const testnetAPI = settingsAPIs.WS_NODE_LIST.find(a => a.url.indexOf("node.testnet.bitshares.eu") !== -1);
+let testnetAPI = settingsAPIs.WS_NODE_LIST.find(a => a.url.indexOf("node.testnet.bitshares.eu") !== -1);
+
+testnetAPI = testnetAPI ? testnetAPI : {};
 
 class ApiNode extends React.Component {
     constructor(props){
