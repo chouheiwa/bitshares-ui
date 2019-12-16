@@ -3,11 +3,13 @@ import IntlActions from "actions/IntlActions";
 import SettingsActions from "actions/SettingsActions";
 import counterpart from "counterpart";
 var locale_en = require("json-loader!assets/locales/locale-en");
+var locale_zh = require("json-loader!assets/locales/locale-zh");
 import ls from "common/localStorage";
 let ss = new ls("__graphene__");
 
 counterpart.registerTranslations("en", locale_en);
 counterpart.setFallbackLocale("en");
+counterpart.registerTranslations("zh", locale_zh);
 
 import {addLocaleData} from "react-intl";
 
@@ -18,10 +20,10 @@ for (let localeCode of localeCodes) {
 
 class IntlStore {
     constructor() {
-        this.currentLocale = ss.has("settings_v3") ? ss.get("settings_v3").locale : "en";
+        this.currentLocale = ss.has("settings_v3") ? ss.get("settings_v3").locale : "zh";
 
-        this.locales = ["en"];
-        this.localesObject = {en: locale_en};
+        this.locales = ["en", "zh"];
+        this.localesObject = {en: locale_en, zh: locale_zh};
 
         this.bindListeners({
             onSwitchLocale: IntlActions.switchLocale,
@@ -40,13 +42,15 @@ class IntlStore {
 
     onSwitchLocale({locale, localeData}) {
         switch (locale) {
-        case "en":
-            counterpart.registerTranslations("en", this.localesObject.en);
-            break;
-
-        default:
-            counterpart.registerTranslations(locale, localeData);
-            break;
+            case "en":
+                counterpart.registerTranslations("en", this.localesObject.en);
+                break;
+            case "zh":
+                counterpart.registerTranslations("zh", this.localesObject.zh);
+                break;
+            default:
+                counterpart.registerTranslations(locale, localeData);
+                break;
         }
 
         counterpart.setLocale(locale);
@@ -60,7 +64,7 @@ class IntlStore {
     }
 
     onClearSettings() {
-        this.onSwitchLocale({locale: "en"});
+        this.onSwitchLocale({locale: "zh"});
     }
 }
 

@@ -314,7 +314,7 @@ class Header extends React.Component {
         //     </div>
         // ) : null;
 
-        let tradeUrl = this.props.lastMarket ? `/market/${this.props.lastMarket}` : "/market/USD_BTS";
+        let tradeUrl = this.props.lastMarket ? `/market/${this.props.lastMarket}` : "/market/CNY_ALAD";
         let tradeLink = <a style={{flexFlow: "row"}} className={cnames({active: active.indexOf("market/") !== -1})} onClick={this._onNavigate.bind(this, tradeUrl)}>
                 <Icon size="1_5x" style={{position: "relative", top: -2, left: -8}} name="trade"/>
                 <Translate component="span" content="header.exchange" />

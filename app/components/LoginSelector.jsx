@@ -12,7 +12,7 @@ import SettingsStore from "stores/SettingsStore";
 import IntlActions from "actions/IntlActions";
 
 const FlagImage = ({flag, width = 50, height = 50}) => {
-     return <img height={height} width={width} src={`${__BASE_URL__}language-dropdown/${flag.toUpperCase()}.png`} />;
+    return <img height={height} width={width} src={`${__BASE_URL__}language-dropdown/${flag.toUpperCase()}.png`} />;
 };
 
 class LoginSelector extends React.Component {
@@ -35,7 +35,7 @@ class LoginSelector extends React.Component {
         const childCount = React.Children.count(this.props.children);
 
         // do redirect to portfolio if user already logged in
-        if(Array.isArray(myAccounts) && myAccounts.length !== 0 && childCount === 0)
+        if(Array.isArray(myAccounts) && myAccounts.length !== 0 && childCount === 0 && this.props.router)
             this.props.router.push("/account/"+this.props.currentAccount);
     }
 
@@ -51,7 +51,7 @@ class LoginSelector extends React.Component {
 
     render() {
         const childCount = React.Children.count(this.props.children);
-        
+
         const flagDropdown = <ActionSheet>
             <ActionSheet.Button title="" style={{width:"64px"}}>
                 <a style={{padding: "1rem", border: "none"}} className="button arrow-down">
@@ -73,7 +73,7 @@ class LoginSelector extends React.Component {
                 </ul>
             </ActionSheet.Content>
         </ActionSheet>;
-        
+
         return (
             <div className="grid-block align-center">
                 <div className="grid-block shrink vertical">
@@ -89,17 +89,9 @@ class LoginSelector extends React.Component {
                             <div>
                                 <Translate content="account.intro_text_title" component="h4"/>
                                 <Translate unsafe content="account.intro_text_1" component="p" />
-                               
-                                <div className="shrink text-center">
-                                    <div className="grp-menu-item overflow-visible account-drop-down">
-                                        <div className="grp-menu-item overflow-visible" style={{margin:"0 auto"}}>
-                                        {flagDropdown}
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         }
-                        
+
                         {!!childCount ? null :
                         <div className="grid-block account-login-options">
                             <Link to="/create-account/password" className="button primary">
@@ -116,7 +108,7 @@ class LoginSelector extends React.Component {
 
                         {!!childCount ? null :
                         <div className="additional-account-options">
-                            <p>Optionally, <Link to="/wallet/backup/restore">restore your account</Link> or create an account using the <Link to="/create-account/wallet">advanced form</Link>.</p>
+                            <p>你可以 <Link to="/wallet/backup/restore" onlyActiveOnIndex>恢复你的账户</Link> .</p>
                         </div>}
 
                         {this.props.children}

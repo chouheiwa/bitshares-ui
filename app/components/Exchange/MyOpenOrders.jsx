@@ -252,7 +252,7 @@ class MyOpenOrders extends React.Component {
         let {activeTab} = this.state;
 
         if (!base || !quote) return null;
-        
+
         let contentContainer;
 
         // Is asset a BitAsset with Settlements
@@ -266,7 +266,7 @@ class MyOpenOrders extends React.Component {
         if(activeTab == "my_orders") {
             const orders = this._getOrders();
             let emptyRow = <tr><td style={{textAlign: "center"}} colSpan="5"><Translate content="account.no_orders" /></td></tr>;
-    
+
             let bids = orders.filter(a => {
                 return a.isBid();
             }).sort((a, b) => {
@@ -275,7 +275,7 @@ class MyOpenOrders extends React.Component {
                 let price = order.getPrice();
                 return <OrderRow price={price} key={order.id} order={order} base={base} quote={quote} onCancel={this.props.onCancel.bind(this, order.id)}/>;
             });
-    
+
             let asks = orders.filter(a => {
                 return !a.isBid();
             }).sort((a, b) => {
@@ -284,29 +284,29 @@ class MyOpenOrders extends React.Component {
                 let price = order.getPrice();
                 return <OrderRow price={price} key={order.id} order={order} base={base} quote={quote} onCancel={this.props.onCancel.bind(this, order.id)}/>;
             });
-    
+
             let rows = [];
-    
+
             if (asks.length) {
                 rows = rows.concat(asks);
             }
-    
+
             if (bids.length) {
                 rows = rows.concat(bids);
             }
-    
+
             rows.sort((a, b) => {
                 return a.props.price - b.props.price;
             });
 
             contentContainer = (<TransitionWrapper component="tbody" transitionName="newrow">{rows.length ? rows : emptyRow}</TransitionWrapper>);
-        } 
-        
+        }
+
         {/* Open Settle Orders */}
-        
+
         if(activeTab && activeTab == "open_settlement") {
-            contentContainer = 
-                <OpenSettleOrders 
+            contentContainer =
+                <OpenSettleOrders
                     key="settle_orders"
                     orders={settleOrders}
                     base={base}
@@ -323,7 +323,7 @@ class MyOpenOrders extends React.Component {
         let openSettlementWidth = baseIsBitAsset || quoteIsBitAsset ? "inherit" : "none";
 
         return (
-            <div 
+            <div
                 style={{marginBottom: "15px"}}
                 key="open_orders"
                 className={this.props.className}
@@ -339,7 +339,7 @@ class MyOpenOrders extends React.Component {
                     </div>
                     <div className="grid-block shrink left-orderbook-header market-right-padding-only">
                         <table className="table order-table text-right fixed-table market-right-padding">
-                            {activeTab == "my_orders" ? 
+                            {activeTab == "my_orders" ?
                                 <TableHeader rightAlign type="sell" baseSymbol={baseSymbol} quoteSymbol={quoteSymbol} />
                                 :
                                 <thead>
@@ -353,7 +353,7 @@ class MyOpenOrders extends React.Component {
                             }
                         </table>
                     </div>
-                    
+
                     <div className="table-container grid-block market-right-padding-only no-overflow" ref="container" style={{overflow: "hidden", maxHeight: 200}}>
                         <table className="table order-table text-right fixed-table market-right-padding">
                             {contentContainer}

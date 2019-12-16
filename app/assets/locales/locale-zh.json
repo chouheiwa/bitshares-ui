@@ -20,7 +20,7 @@
         "ru": "Русский"
     },
     "incognito": {
-        "no_support": "当前比特股钱包依赖于本地存储和IndexedDB，在使用隐身浏览时数据无法持续保存。我们建议您使用常规浏览方式。",
+        "no_support": "当前ALAD钱包依赖于本地存储和IndexedDB，在使用隐身浏览时数据无法持续保存。我们建议您使用常规浏览方式。",
         "ignore": "我了解，并继续。"
     },
     "sync_fail": {
@@ -29,7 +29,7 @@
         "sub_text_2": "同步你的计算机时钟后，请刷新本页面。如果你的时钟正确，那你连接的API服务器可能与区块链数据不同步，这种情况下，可尝试使用其他API服务器进行连接。"
     },
     "header": {
-        "title": "BitShares 钱包",
+        "title": "ALAD 钱包",
         "account": "账户",
         "dashboard": "资产总览",
         "explorer": "浏览",
@@ -51,7 +51,8 @@
         "locked_tip": "钱包已锁定，点击解锁。",
         "unlocked_tip": "钱包已解锁，点击锁定。",
         "account_notify": "当前活跃账户为 %(account)s",
-        "account_value": "账户价值"
+        "account_value": "账户价值",
+        "payments_legacy": "转账"
     },
     "tooltip": {
         "call_limit": "市场中抵押率最低的债仓的平仓价",
@@ -72,7 +73,7 @@
         "cr_danger": "该债仓的抵押率已低于要求水平。请考虑补仓以至少将抵押率提高到 %(mr)s 或进行平仓。",
         "cr_warning": "该债仓已接近强制平仓触发价。如果抵押率低于 %(mr)s，该债仓将被强制平仓，请考虑补仓或平仓。",
         "propose_scam": "该提案发起人是已知的诈骗嫌疑人，请不要批准该提案！",
-        "login": "比特股钱包并不提供传统的登录方式，而是通过锁定和解锁<b>只存储于用户浏览器中</b>的钱包。<br/><br/>当你关闭钱包时，钱包即被锁定，也就相当于登出了系统。",
+        "login": "ALAD钱包并不提供传统的登录方式，而是通过锁定和解锁<b>只存储于用户浏览器中</b>的钱包。<br/><br/>当你关闭钱包时，钱包即被锁定，也就相当于登出了系统。",
         "buy_min": "你将至少收到这些金额。如果有定价低于你的设定的订单被撮合，你实际收到的金额会更多。",
         "borrow": "从系统借出 %(asset)s 。系统将创建一个智能合约并冻结你的抵押物。你可以随时调整仓位或进行平仓。",
         "transfer_actions": "点击这里进行转账，或充值/提取支持充提功能的资产。",
@@ -100,11 +101,11 @@
         "existing_user": "老用户",
         "restore": "还原",
         "advanced": "高级",
-        "intro_text_title": "欢迎使用比特股去中心化交易所！",
-        "intro_text_1": "<b>比特股2.0</b>是一个基于区块链构建的去中心化交易所（通称DEX）。 DEX有着工业级的业务处理能力，能够永不停歇地提供公正和透明的服务，这里有比特股首创的bitCNY,bitUSD等智能货币，用户可以在这里根据自己的需要发行用户定义资产（UIA），也可以买卖通用的数字资产如BTC、ETH等。",
+        "intro_text_title": "欢迎使用ALAD(阿拉丁)去中心化交易所！",
+        "intro_text_1": "<b>ALAD(阿拉丁)2.0</b>是一个基于区块链构建的去中心化交易所（通称DEX）。 DEX有着工业级的业务处理能力，能够永不停歇地提供公正和透明的服务，这里有ALAD(阿拉丁)首创的CNY,USD等智能货币，用户可以在这里根据自己的需要发行用户定义资产（UIA），也可以买卖通用的数字资产如BTC、ETH等。",
         "intro_text_2": "发行用户定义资产（UIA），也可以买卖通用的数字资产如BTC、ETH等。",
         "intro_text_3": "尽情享受交易的乐趣吧！",
-        "intro_text_4": "<br/>网站：&nbsp;&nbsp;&nbsp;&nbsp;<a target='_blank' rel='noopener noreferrer' href='https://bitshares.org'>https://bitshares.org</a><br/>论坛：&nbsp;&nbsp;&nbsp;&nbsp;<a target='_blank' rel='noopener noreferrer' href='https://bitsharestalk.org'>https://bitsharestalk.org</a><br/>GitHub：<a target='_blank' rel='noopener noreferrer' href='https://github.com/bitshares/bitshares-core'>https://github.com/bitshares/bitshares-core</a>",
+        "intro_text_4": "<br/>网站：&nbsp;&nbsp;&nbsp;&nbsp;<a target='_blank' rel='noopener noreferrer' href='https://ALAD.org'>https://ALAD.org</a><br/>论坛：&nbsp;&nbsp;&nbsp;&nbsp;<a target='_blank' rel='noopener noreferrer' href='https://ALADtalk.org'>https://ALADtalk.org</a><br/>GitHub：<a target='_blank' rel='noopener noreferrer' href='https://github.com/ALAD/ALAD-core'>https://github.com/ALAD/ALAD-core</a>",
         "in_open": "这是你在所有委单中的 %(asset)s 资产的数量。",
         "in_open_value": "这是你在所有委单中的 %(asset)s 资产的大致价值。",
         "transfer_actions": "转账操作",
@@ -112,7 +113,7 @@
         "see_open": "查看委单",
         "total_estimate": "这是你所有资产的估值，其中包含在界面中设置隐藏的资产、委单中的资产、债务及抵押物。估值采用实时获得的区块链上的价格，可能并不完全准确。",
         "trade": "交易",
-        "welcome": "欢迎使用 BitShares 系统",
+        "welcome": "欢迎使用 ALAD 系统",
         "asset": "资产",
         "market_value": "市值",
         "hour_24": "日涨跌幅%",
@@ -446,8 +447,8 @@
         "older": "更早"
     },
     "transfer": {
-        "header": "转账详情", 
-        "header_subheader": "可以将资产转账给其他 BitShares 帐号持有者",
+        "header": "转账详情",
+        "header_subheader": "可以将资产转账给其他 ALAD 帐号持有者",
         "from": "来自",
         "pay_from": "支付自",
         "amount": "数量",
@@ -699,7 +700,7 @@
     "explorer": {
         "accounts": {
             "title": "账户",
-            "filter": "筛选账户", 
+            "filter": "筛选账户",
             "filter_contacts": "筛选联系人"
         },
         "blocks": {
@@ -949,7 +950,7 @@
         "high_latency": "高延迟"
     },
     "footer": {
-        "title": "BitShares",
+        "title": "ALAD",
         "block": "最新区块",
         "loading": "载入中…",
         "backup": "需要备份",
@@ -1058,7 +1059,8 @@
         "show_star_2": "",
         "quote": "报价货币：",
         "search": "搜索更多交易对",
-        "order_value": "委单价值"
+        "order_value": "委单价值",
+        "trading_pair": "交易对"
     },
     "fees": {
         "title": "费率表"
@@ -1084,7 +1086,7 @@
         "create_wallet": "创建新钱包",
         "create_importkeys_text": "导入私钥前，你需要创建一个新的钱包来存储私钥。请根据提示创建钱包。",
         "create_wallet_backup": "从备份创建新钱包",
-        "import_bts1": "从BitShares 0.9.3c导入",
+        "import_bts1": "从ALAD 0.9.3c导入",
         "setup_wallet": "设置钱包",
         "delete_wallet": "删除钱包",
         "delete_confirm_line1": "你确定么？",
@@ -1231,11 +1233,11 @@
         "current_pass": "当前密码",
         "no_wallet": "你还没有钱包",
         "generated": "生成的密码",
-        "account_exp": "此账户名将被注册在区块链中，你将可以使用此账户名进行转账等任意操作。<strong>比特股中不使用类似比特币等的长地址！</strong>",
+        "account_exp": "此账户名将被注册在区块链中，你将可以使用此账户名进行转账等任意操作。<strong>ALAD中不使用类似比特币等的长地址！</strong>",
         "understand_1": "我理解如果我忘记或丢失了密码，将没有任何人能够帮助我恢复",
         "understand_2": "我已经写下了或者用其它方式保存了我的密码",
         "understand_3": "我理解如果我丢失了密码，我将永远无法访问我的资产",
-        "bts_rules": "比特股法则第一条: 不要弄丢自己的密码。<br/>第二条法则: 不要弄丢自己的密码。<br />第三条法则: 没有人能帮你恢复。<br />第四条法则: 如果你仅凭脑力就能记住自己的密码，那通常来说它不够强。<br />第五条法则: 只用随机生成的密码。<br />第六条法则: 别告诉别人你的密码。<br />第七条法则: 总是备份你的密码。",
+        "bts_rules": "ALAD法则第一条: 不要弄丢自己的密码。<br/>第二条法则: 不要弄丢自己的密码。<br />第三条法则: 没有人能帮你恢复。<br />第四条法则: 如果你仅凭脑力就能记住自己的密码，那通常来说它不够强。<br />第五条法则: 只用随机生成的密码。<br />第六条法则: 别告诉别人你的密码。<br />第七条法则: 总是备份你的密码。",
         "ok_done": "好的，打开仪表盘",
         "local_switch": "密码和本地钱包匹配，正在切换到钱包模式"
       },
@@ -1271,7 +1273,8 @@
         },
         "deposit": {
             "amount": "充值数量",
-            "submit": "充值"
+            "submit": "充值",
+            "submit_beta": "充值(未开放)"
         },
         "convert": {
           "amount": "兑换数量",
@@ -1314,7 +1317,7 @@
         "connected": "已连接",
         "not_connected": "未连接",
         "browser": "不支持的浏览器",
-        "browser_text": "你使用的浏览器未经过 BitShares 钱包软件的充分测试。强烈建议你备份钱包，并将其导入谷歌 Chrome 浏览器。今后经过我们充分测试后，你或许可以继续使用现在的浏览器。请了解相关风险。",
+        "browser_text": "你使用的浏览器未经过 ALAD 钱包软件的充分测试。强烈建议你备份钱包，并将其导入谷歌 Chrome 浏览器。今后经过我们充分测试后，你或许可以继续使用现在的浏览器。请了解相关风险。",
         "understand": "我理解"
     },
     "refcode": {
@@ -1351,7 +1354,7 @@
         "website": "访问网站",
         "deposit_to": "请将 %(asset)s 转账到以下地址",
         "deposit_address": "充值地址",
-        "add_funds": "轻松快捷地对比特股账户 <strong>%(account)s</strong> 进行充值。此服务由 OpenLedger 提供。",
+        "add_funds": "轻松快捷地对ALAD账户 <strong>%(account)s</strong> 进行充值。此服务由 OpenLedger 提供。",
         "withdraw_funds": "你将提现到 %(asset)s 的外部账户中。",
         "balance_asset": "当前 %(asset)s 余额",
         "withdraw_placeholder": "请输入 %(asset)s 地址",
@@ -1387,7 +1390,7 @@
         "convert_coin": "兑换成 %(coin)s (%(symbol)s)",
         "limit": "限额: %(amount)s %(symbol)s",
         "bridge_text": "桥接服务能让你将一种资产转变成另一种资产，比如从 BTC 转换到 BTS。",
-        "gateway_text": "网关能让你将 BitShares 中的资产与外部资产进行互换，比如 OPEN.BTC 到 BTC。",
+        "gateway_text": "网关能让你将 ALAD 中的资产与外部资产进行互换，比如 OPEN.BTC 到 BTC。",
         "fiat_text": "法币的充值提现服务由 CCEDK 提供。你必须先行在 CCEDK 上进行账户注册。下面是支持的货币：",
         "meta": {
             "open_website": "访问官网"
@@ -1450,8 +1453,8 @@
         "title": "迁移提示",
         "announcement_1": "为了提高浏览器钱包的安全性，我们已经将服务迁移至以下地址。请更新您的书签。",
         "text_1": "检测到本地钱包",
-        "text_2": "请立刻备份钱包，并在 <a href='https://wallet.bitshares.org' target='blank' rel='noopener noreferrer'>https://wallet.bitshares.org</a>将钱包恢复。请今后使用此地址访问浏览器钱包。感谢您一贯的支持。",
-        "text_3": "请今后使用 <a href='https://wallet.bitshares.org' target='blank' rel='noopener noreferrer'>https://wallet.bitshares.org</a> 访问浏览器钱包。您当前的账户和密码不变，可以继续使用。"
+        "text_2": "请立刻备份钱包，并在 <a href='https://wallet.ALAD.org' target='blank' rel='noopener noreferrer'>https://wallet.ALAD.org</a>将钱包恢复。请今后使用此地址访问浏览器钱包。感谢您一贯的支持。",
+        "text_3": "请今后使用 <a href='https://wallet.ALAD.org' target='blank' rel='noopener noreferrer'>https://wallet.ALAD.org</a> 访问浏览器钱包。您当前的账户和密码不变，可以继续使用。"
     },
     "news": {
         "news": "新闻",
